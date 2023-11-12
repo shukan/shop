@@ -23,7 +23,7 @@
 
 公司团队在电子商务软件和互联网技术领域经验资深，历经多年市场实践已研发出具有自主知识产权的新零售智慧电商生态系统、 B2B2C多用户商城、B2B批发商城、O2O门店及收银系统、S2B2C供应链商城、跨境电商系统，骑手跑腿系统、短视频社交电商及直播系统等电子商务软件系统。并取得多项著作权及发明专利。
 
-ShopSuite开源商城基于Go/PHP/Golang + uniapp + Vue3 + ElementUI Plus框架开发的商城系统，Golershop 为 ShopSuite开源商城Go版本.
+ShopSuite开源商城基于Go/PHP/Java + uniapp + Vue3 + ElementUI Plus框架开发的商城系统，Golershop 为 ShopSuite开源商城Go版本.
 
 
 
