@@ -68,6 +68,7 @@ type ProductItemColumns struct {
 	ItemRebate         string // 返利额度
 	ItemSrcId          string // 供应商SKU编号
 	CategoryId         string // 商品分类
+	CourseCategoryId   string // 课程分类
 	StoreId            string // 所属店铺
 	Version            string // 版本
 	PrimaryKey         string // 主键
@@ -100,6 +101,7 @@ var productItemColumns = ProductItemColumns{
 	ItemRebate:         "item_rebate",
 	ItemSrcId:          "item_src_id",
 	CategoryId:         "category_id",
+	CourseCategoryId:   "course_category_id",
 	StoreId:            "store_id",
 	Version:            "version",
 	PrimaryKey:         "item_id",
@@ -170,10 +172,6 @@ func (dao *ProductItemDao) Gets(ctx context.Context, id any) (entitys []*entity.
 	if !g.IsEmpty(id) {
 		err = dao.Ctx(ctx).WherePri(id).Scan(&entitys)
 	}
-
- 	for _, item := range entitys {
-		item.AvailableQuantity = item.ItemQuantity - item.ItemQuantityFrozen
-	} 
 
 	return entitys, err
 }
@@ -257,7 +255,7 @@ func (dao *ProductItemDao) FindKey(ctx context.Context, in *do.ProductItemListIn
 
 	for _, record := range idRes {
 		if !record[dao.Columns().PrimaryKey].IsEmpty() {
-			out = append(out, record[dao.Columns().PrimaryKey].Uint64())
+			out = append(out, record[dao.Columns().PrimaryKey])
 		}
 	}
 
