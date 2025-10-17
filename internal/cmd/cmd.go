@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
@@ -11,6 +12,7 @@ import (
 	"golershop.cn/internal/controller/analytics"
 	"golershop.cn/internal/controller/cms"
 	"golershop.cn/internal/controller/marketing"
+	"golershop.cn/internal/controller/merchant"
 	"golershop.cn/internal/controller/pay"
 	"golershop.cn/internal/controller/pt"
 	"golershop.cn/internal/controller/shop"
@@ -142,6 +144,7 @@ var (
 					trade.OrderReturnReason,
 					analytics.Analytics,
 					analytics.AnalyticsReturn,
+					merchant.MerchantBase,
 				)
 			})
 

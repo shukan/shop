@@ -52,4 +52,5 @@ import (
 	_ "golershop.cn/internal/logic/sys/number"
 	_ "golershop.cn/internal/logic/sys/page"
 	_ "golershop.cn/internal/logic/trade"
+	_ "golershop.cn/internal/logic/merchant"
 )

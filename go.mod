@@ -1,8 +1,9 @@
 module golershop.cn
 
-go 1.18
+go 1.24.8
 
 require (
+	github.com/ArtisanCloud/PowerWeChat/v3 v3.2.26
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/farmerx/gorsa v0.0.0-20161211100049-3ae06f674f40
 	github.com/go-pay/gopay v1.5.100
@@ -24,7 +25,6 @@ require (
 require (
 	github.com/ArtisanCloud/PowerLibs/v3 v3.2.3 // indirect
 	github.com/ArtisanCloud/PowerSocialite/v3 v3.0.7 // indirect
-	github.com/ArtisanCloud/PowerWeChat/v3 v3.2.26 // indirect
 	github.com/BurntSushi/toml v1.3.2 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/clbanning/mxj/v2 v2.7.0 // indirect
