@@ -4,6 +4,7 @@ import (
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/mallsuite/gocore/core/ml"
+	"golershop.cn/internal/model"
 )
 
 // start fo front
@@ -50,7 +51,7 @@ type MerchantBaseAddReq struct {
 type MerchantBaseEditReq struct {
 	g.Meta `path:"/manage/merchant/merchantBase/edit" tags:"商户管理" method:"post" summary:"商户管理编辑接口"`
 
-	Id uint `json:"id"   ` // 物流管理编号`
+	Id uint `json:"id"   ` // 商户管理编号`
 	MerchantBaseAdd
 }
 type MerchantBaseListRes struct {
@@ -60,6 +61,31 @@ type MerchantBaseListRes struct {
 	Records int         `json:"records"` // 数据总数
 	Size    int         `json:"size"`    // 单页数量
 }
+type MerchantBaseRemoveReq struct {
+	g.Meta `path:"/manage/merchant/merchantBase/remove" tags:"商户管理" method:"post" summary:"商户管理删除接口"`
+	Id     uint `json:"id"   ` // 商户管理编号
+}
+
+type MerchantBaseRemoveRes struct {
+}
 type MerchantBaseEditRes struct {
 	MerchantId interface{} `json:"merchant_id"   dc:"商户信息"`
+}
+type MerchantBaseEditStateReq struct {
+	g.Meta `path:"/manage/merchant/merchantBase/editState" tags:"商户管理" method:"post" summary:"商户管理修改状态接口"`
+
+	Id               uint `json:"id"   `                // 商户管理编号`
+	MerchantIsEnable bool `json:"merchant_is_enable"  ` // 是否启用(BOOL):1-启用;0-禁用
+}
+
+type MerchantBaseEditStateRes struct {
+	Id interface{} `json:"id"   dc:"商户管理信息"`
+}
+type MerchantBaseDetailReq struct {
+	g.Meta `path:"/manage/merchant/merchantBase/detail" tags:"商户管理" method:"get" summary:"商户详情接口"`
+	Id     uint `json:"id" v:"required#请输入商户ID"   dc:"商户ID"`
+}
+
+type MerchantBaseDetailRes struct {
+	model.MerchantInfoVo
 }

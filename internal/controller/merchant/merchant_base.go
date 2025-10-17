@@ -70,3 +70,50 @@ func (c *cMerchantBase) Edit(ctx context.Context, req *merchant.MerchantBaseEdit
 
 	return
 }
+
+// Remove 删除
+func (c *cMerchantBase) Remove(ctx context.Context, req *merchant.MerchantBaseRemoveReq) (res *merchant.MerchantBaseRemoveRes, err error) {
+
+	var _, error = service.MerchantBase().Remove(ctx, req.Id)
+
+	if error != nil {
+		err = error
+	}
+
+	res = &merchant.MerchantBaseRemoveRes{}
+
+	return
+}
+
+// EditState 修改状态
+func (c *cMerchantBase) EditState(ctx context.Context, req *merchant.MerchantBaseEditStateReq) (res *merchant.MerchantBaseEditStateRes, err error) {
+
+	input := do.MerchantBase{}
+	gconv.Scan(req, &input)
+
+	var result, error = service.MerchantBase().Edit(ctx, &input)
+
+	if error != nil {
+		err = error
+	}
+
+	res = &merchant.MerchantBaseEditStateRes{
+		Id: result,
+	}
+
+	return
+}
+
+// Find 详情
+func (c *cMerchantBase) Find(ctx context.Context, req *merchant.MerchantBaseDetailReq) (res *merchant.MerchantBaseDetailRes, err error) {
+
+	merchantInfo, error := service.MerchantBase().GetById(ctx, req.Id)
+
+	if error != nil {
+		return nil, err
+	}
+
+	// 将结果赋值给返回值
+	gconv.Scan(merchantInfo, &res)
+	return res, nil
+}

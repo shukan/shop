@@ -19,6 +19,8 @@ type (
 		Edit(ctx context.Context, in *do.MerchantBase) (affected int64, err error)
 		// Remove 删除多条记录模式
 		Remove(ctx context.Context, id any) (affected int64, err error)
+		// GetById 通过ID获取详细信息
+		GetById(ctx context.Context, merchantId uint) (merchantInfoOutput *entity.MerchantBase, err error)
 	}
 )
 

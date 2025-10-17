@@ -126,7 +126,7 @@ func (dao *BaseDao) Transaction(ctx context.Context, f func(ctx context.Context,
 }
 
 // Find 查询数据
-func (dao *BaseDao) Find(ctx context.Context, in *do.MaterialBaseListInput) (out []*entity.MerchantBase, err error) {
+func (dao *BaseDao) Find(ctx context.Context, in *do.MerchantBaseListInput) (out []*entity.MerchantBase, err error) {
 	var (
 		m = dao.Ctx(ctx)
 	)
@@ -207,6 +207,41 @@ func (dao *BaseDao) Edit(ctx context.Context, id any, in *do.MerchantBase) (int6
 	if err := gconv.Scan(in, &data); err != nil {
 		return 0, err
 	}
-	
+
 	return dao.Ctx(ctx).Data(data).OmitNil().WherePri(id).UpdateAndGetAffected()
+}
+
+// Remove 根据主键删除
+func (dao *BaseDao) Remove(ctx context.Context, id any) (int64, error) {
+	res, err := dao.Ctx(ctx).WherePri(id).Delete()
+	if err != nil {
+		return 0, err
+	}
+
+	return res.RowsAffected()
+}
+
+// Gets 读取多条记录
+func (dao *BaseDao) Gets(ctx context.Context, id any) (entitys []*entity.MerchantBase, err error) {
+	if !g.IsEmpty(id) {
+		err = dao.Ctx(ctx).WherePri(id).Scan(&entitys)
+	}
+
+	return entitys, err
+}
+
+// Get 读取一条记录
+func (dao *BaseDao) Get(ctx context.Context, id any) (one *entity.MerchantBase, err error) {
+	var entitys []*entity.MerchantBase
+	entitys, err = dao.Gets(ctx, id)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if len(entitys) > 0 {
+		one = entitys[0]
+	}
+
+	return one, err
 }
