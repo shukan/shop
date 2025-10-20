@@ -156,7 +156,7 @@ func (dao *BaseDao) List(ctx context.Context, in *do.MerchantBaseListInput) (out
 		m = dao.Ctx(ctx)
 	)
 
-	query := m.Where(in.Where).OmitNil()
+	query := m.Where(in.Where).Where("deleted_time IS NULL").OmitNil()
 	query = ml.BuildWhere(query, in.WhereLike, in.WhereExt)
 
 	out = &do.MerchantBaseListOutput{}
@@ -213,7 +213,11 @@ func (dao *BaseDao) Edit(ctx context.Context, id any, in *do.MerchantBase) (int6
 
 // Remove 根据主键删除
 func (dao *BaseDao) Remove(ctx context.Context, id any) (int64, error) {
-	res, err := dao.Ctx(ctx).WherePri(id).Delete()
+	//res, err := dao.Ctx(ctx).WherePri(id).Delete()
+	res, err := dao.Ctx(ctx).WherePri(id).Update(
+		g.Map{
+			"deleted_time": gdb.Raw("NOW()"),
+		})
 	if err != nil {
 		return 0, err
 	}
