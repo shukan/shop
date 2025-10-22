@@ -26,54 +26,88 @@ type BaseDao struct {
 
 // BaseColumns defines and stores column names for the table merchant_base.
 type BaseColumns struct {
-	Id                      string // 自增主键
-	MerchantIsSelfsupport   string // 是否自营(BOOL):1-默认;0-非默认
-	MerchantName            string // 商户名称
-	MerchantOpeningHours    string // 商户营业时间
-	MerchantCloseHours      string // 商户关闭时间
-	MerchantIntl            string // 商户手机号码国家代码
-	MerchantTel             string // 商户手机号码
-	MerchantLogo            string // 商户logo
-	MerchantLongitude       string // 商户经度
-	MerchantLatitude        string // 商户维度
-	ProvinceId              string // 商户地址省id
-	Province                string // 商户地址省
-	CityId                  string // 商户地址市id
-	City                    string // 商户地址市
-	CountyId                string // 商户地址区id
-	County                  string // 商户地址区
-	MerchantDistrictId      string // 商户地址省市区id拼接字符串(英文逗号拼接)
-	MerchantArea            string // 商户地址省市区拼接字符串(英文逗号拼接)
-	MerchantDetailedAddress string // 商户详细地址
-	MerchantIsEnable        string // 是否启用(BOOL):1-启用;0-禁用
-	CreateTime              string // 创建时间
-	UpdateTime              string // 更新时间
+	Id                         string // 自增主键
+	MerchantIsSelfsupport      string // 是否自营(BOOL):1-默认;0-非默认
+	MerchantName               string // 商户名称
+	MerchantLogo               string // 商户logo
+	CreateTime                 string // 创建时间
+	UpdateTime                 string // 更新时间
+	DeletedTime                string // 删除时间
+	LegalRepresentativeRame    string // 法人姓名
+	CorporateIDnumber          string // 法人证件号
+	CorporateIDphotoFront      string // 法人证件照正面
+	CorporateIDphotoBack       string // 法人证件照反面
+	MerchantIntl               string // 商户手机号码国家代码
+	MerchantTel                string // 商户手机号码
+	MerchantLongitude          string // 商户经度
+	MerchantLatitude           string // 商户维度
+	ProvinceId                 string // 商户地址省id
+	Province                   string // 商户地址省
+	CityId                     string // 商户地址市id
+	City                       string // 商户地址市
+	CountyId                   string // 商户地址区id
+	County                     string // 商户地址区
+	MerchantDistrictId         string // 商户地址省市区id拼接字符串(英文逗号拼接)
+	MerchantArea               string // 商户地址省市区拼接字符串(英文逗号拼接)
+	MerchantDetailedAddress    string // 商户详细地址
+	BusinessLicense            string // 商户营业执照
+	UnifiedSocialCreditCode    string // 商户统一社会信用代码
+	OtherInformation           string // 商户其他资料图片
+	MerchantReviewStatus       string // 商户审核状态(0=待审核;1=审核通过;2=审核未通过)
+	MerchantSettleinStatus     string // 商户入驻状态(0=未入驻;1=已入住;2=入驻失败;3=退出入驻)
+	MerchantReviewFailReason   string // 商户审核失败原因
+	MerchantReviewFailImage    string // 商户审核失败图片
+	MerchantExitSettleinReason string // 商户退出入驻原因
+	MerchantBanStatus          string // 商户封禁状态(0=未封禁;1=已封禁;2=解除封禁审核中;3=解除封禁审核失败)
+	MerchantBanReason          string // 商户封禁原因
+	MerchantBanImage           string // 商户封禁图片
+	MerchantApplyUnbanReason   string // 商户申请解封原因
+	MerchantApplyUnbanImage    string // 商户申请解封图片
+	MerchantUnbanFailReason    string // 商户申请解封失败原因
+	MerchantUnbanFailImage     string // 商户申请解封失败图片
 }
 
 // baseColumns holds the columns for the table merchant_base.
 var baseColumns = BaseColumns{
-	Id:                      "id",
-	MerchantIsSelfsupport:   "merchant_is_selfsupport",
-	MerchantName:            "merchant_name",
-	MerchantOpeningHours:    "merchant_opening_hours",
-	MerchantCloseHours:      "merchant_close_hours",
-	MerchantIntl:            "merchant_intl",
-	MerchantTel:             "merchant_tel",
-	MerchantLogo:            "merchant_logo",
-	MerchantLongitude:       "merchant_longitude",
-	MerchantLatitude:        "merchant_latitude",
-	ProvinceId:              "province_id",
-	Province:                "province",
-	CityId:                  "city_id",
-	City:                    "city",
-	CountyId:                "county_id",
-	County:                  "county",
-	MerchantDistrictId:      "merchant_district_id",
-	MerchantArea:            "merchant_area",
-	MerchantDetailedAddress: "merchant_detailed_address",
-	MerchantIsEnable:        "merchant_is_enable",
-	CreateTime:              "create_time",
-	UpdateTime:              "update_time",
+	Id:                         "id",
+	MerchantIsSelfsupport:      "merchant_is_selfsupport",
+	MerchantName:               "merchant_name",
+	MerchantLogo:               "merchant_logo",
+	CreateTime:                 "create_time",
+	UpdateTime:                 "update_time",
+	DeletedTime:                "deleted_time",
+	LegalRepresentativeRame:    "legal_representative_rame",
+	CorporateIDnumber:          "corporate_IDnumber",
+	CorporateIDphotoFront:      "corporate_IDphoto_front",
+	CorporateIDphotoBack:       "corporate_IDphoto_back",
+	MerchantIntl:               "merchant_intl",
+	MerchantTel:                "merchant_tel",
+	MerchantLongitude:          "merchant_longitude",
+	MerchantLatitude:           "merchant_latitude",
+	ProvinceId:                 "province_id",
+	Province:                   "province",
+	CityId:                     "city_id",
+	City:                       "city",
+	CountyId:                   "county_id",
+	County:                     "county",
+	MerchantDistrictId:         "merchant_district_id",
+	MerchantArea:               "merchant_area",
+	MerchantDetailedAddress:    "merchant_detailed_address",
+	BusinessLicense:            "business_license",
+	UnifiedSocialCreditCode:    "unified_social_credit_code",
+	OtherInformation:           "other_information",
+	MerchantReviewStatus:       "merchant_review_status",
+	MerchantSettleinStatus:     "merchant_settlein_status",
+	MerchantReviewFailReason:   "merchant_review_fail_reason",
+	MerchantReviewFailImage:    "merchant_review_fail_image",
+	MerchantExitSettleinReason: "merchant_exit_settlein_reason",
+	MerchantBanStatus:          "merchant_ban_status",
+	MerchantBanReason:          "merchant_ban_reason",
+	MerchantBanImage:           "merchant_ban_image",
+	MerchantApplyUnbanReason:   "merchant_apply_unban_reason",
+	MerchantApplyUnbanImage:    "merchant_apply_unban_image",
+	MerchantUnbanFailReason:    "merchant_unban_fail_reason",
+	MerchantUnbanFailImage:     "merchant_unban_fail_image",
 }
 
 // NewBaseDao creates and returns a new DAO object for table data access.
@@ -124,6 +158,7 @@ func (dao *BaseDao) Ctx(ctx context.Context) *gdb.Model {
 func (dao *BaseDao) Transaction(ctx context.Context, f func(ctx context.Context, tx gdb.TX) error) (err error) {
 	return dao.Ctx(ctx).Transaction(ctx, f)
 }
+
 
 // Find 查询数据
 func (dao *BaseDao) Find(ctx context.Context, in *do.MerchantBaseListInput) (out []*entity.MerchantBase, err error) {

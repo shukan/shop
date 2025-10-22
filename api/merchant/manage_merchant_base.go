@@ -11,27 +11,32 @@ import (
 
 // start fo manage
 type MerchantBaseAdd struct {
-	Id                      uint        `json:"id"         `                    // 自增
-	MerchantIsSelfsupport   bool        `json:"merchant_is_selfsupport" `       // 是否自营(BOOL):1-默认;0-非默认
-	MerchantName            string      `json:"merchant_name"     `             // 商户名称
-	MerchantOpeningHours    string      `json:"merchant_opening_hours"     `    // 商户营业时间
-	MerchantCloseHours      string      `json:"merchant_close_hours"     `      // 商户关闭时间
-	MerchantIntl            string      `json:"merchant_intl"     `             // 商户手机号码国家代码
-	MerchantTel             string      `json:"merchant_tel"     `              // 商户手机号码
-	MerchantLogo            string      `json:"merchant_logo"     `             // 商户logo
-	MerchantLongitude       string      `json:"merchant_longitude"     `        // 商户经度
-	MerchantLatitude        string      `json:"merchant_latitude"     `         // 商户维度
-	ProvinceId              int         `json:"province_id"     `               // 商户地址省id
-	Province                string      `json:"province"     `                  // 商户地址省
-	CityId                  int         `json:"city_id"     `                   // 商户地址市id
-	City                    string      `json:"city"     `                      // 商户地址市
-	CountyId                int         `json:"county_id"     `                 // 商户地址区id
-	County                  string      `json:"county"     `                    // 商户地址区
-	MerchantDistrictId      string      `json:"merchant_district_id"     `      // 商户地址省市区id拼接字符串(英文逗号拼接)
-	MerchantArea            string      `json:"merchant_area"     `             // 商户地址省市区拼接字符串(英文逗号拼接)
-	MerchantDetailedAddress string      `json:"merchant_detailed_address"     ` // 商户详细地址
-	MerchantIsEnable        bool        `json:"merchant_is_enable"  `           // 是否启用(BOOL):1-启用;0-禁用
-	CreateTime              *gtime.Time `json:"create_time"          `          // 创建时间
+	Id                      uint        `json:"id"         `                     // 自增
+	MerchantIsSelfsupport   bool        `json:"merchant_is_selfsupport" `        // 是否自营(BOOL):1-默认;0-非默认
+	MerchantName            string      `json:"merchant_name"     `              // 商户名称
+	MerchantLogo            string      `json:"merchant_logo"     `              // 商户logo
+	MerchantLongitude       string      `json:"merchant_longitude"     `         // 商户经度
+	MerchantLatitude        string      `json:"merchant_latitude"     `          // 商户维度
+	MerchantIntl            string      `json:"merchant_intl"     `              // 商户手机号码国家代码
+	MerchantTel             string      `json:"merchant_tel"     `               // 商户手机号码
+	ProvinceId              int         `json:"province_id"     `                // 商户地址省id
+	Province                string      `json:"province"     `                   // 商户地址省
+	CityId                  int         `json:"city_id"     `                    // 商户地址市id
+	City                    string      `json:"city"     `                       // 商户地址市
+	CountyId                int         `json:"county_id"     `                  // 商户地址区id
+	County                  string      `json:"county"     `                     // 商户地址区
+	MerchantDistrictId      string      `json:"merchant_district_id"     `       // 商户地址省市区id拼接字符串(英文逗号拼接)
+	MerchantArea            string      `json:"merchant_area"     `              // 商户地址省市区拼接字符串(英文逗号拼接)
+	MerchantDetailedAddress string      `json:"merchant_detailed_address"     `  // 商户详细地址
+	MerchantIsEnable        bool        `json:"merchant_is_enable"  `            // 是否启用(BOOL):1-启用;0-禁用
+	LegalRepresentativeRame string      `json:"legal_representative_rame"     `  // 商户法人姓名
+	CorporateIDnumber       string      `json:"corporate_IDnumber"     `         // 商户法人身份证号码
+	CorporateIDphotoFront   string      `json:"corporate_IDphoto_front"     `    // 商户法人身份证正面
+	CorporateIDphotoBack    string      `json:"corporate_IDphoto_back"     `     // 商户法人身份反正面
+	UnifiedSocialCreditCode string      `json:"unified_social_credit_code"     ` // 商户社会统一信用代码
+	BusinessLicense         string      `json:"business_license"     `           // 商户营业执照
+	OtherInformation        string      `json:"other_information"     `          // 商户其他信息
+	CreateTime              *gtime.Time `json:"create_time"          `           // 创建时间
 }
 
 type MerchantBaseListReq struct {
